@@ -1,23 +1,24 @@
 package it.uniroma3.CancianiQuintarelli.SilphSPA.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
-import com.vaadin.flow.component.polymertemplate.Id;
+
 
 @Entity
 public class SilphStaff {
 	
 	@Id
-	String userName;
+	String username;
 	
 	String password;
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	public String getPassword() {

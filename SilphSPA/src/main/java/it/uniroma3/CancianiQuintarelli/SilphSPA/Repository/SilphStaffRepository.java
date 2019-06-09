@@ -7,5 +7,5 @@ import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.SilphStaff;
 
 @Repository
 public interface SilphStaffRepository extends CrudRepository<SilphStaff, String> {
-	
+	public SilphStaff findByUsernameAndPassword(String username, String password);
 }
