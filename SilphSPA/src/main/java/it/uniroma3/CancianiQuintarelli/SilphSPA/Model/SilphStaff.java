@@ -1,6 +1,8 @@
 package it.uniroma3.CancianiQuintarelli.SilphSPA.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -9,9 +11,14 @@ import javax.persistence.Id;
 public class SilphStaff {
 	
 	@Id
-	String username;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id;
 	
-	String password;
+	private String username;
+	
+	private String password;
+	
+	
 
 	public String getUsername() {
 		return username;
