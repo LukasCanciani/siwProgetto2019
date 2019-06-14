@@ -20,7 +20,7 @@ public class Foto {
 	private String uri;
 	
 	@ManyToMany(mappedBy="foto")
-	private List<Album> album;
+	private List<Album> listaAlbum;
 	
 	@ManyToOne
 	private Fotografo fotografo;
@@ -45,12 +45,12 @@ public class Foto {
 		this.uri = uri;
 	}
 
-	public List<Album> getAlbum() {
-		return album;
+	public List<Album> getListaAlbum() {
+		return listaAlbum;
 	}
 
-	public void setAlbum(List<Album> album) {
-		this.album = album;
+	public void setListaAlbum(List<Album> album) {
+		this.listaAlbum = album;
 	}
 
 	public Fotografo getFotografo() {

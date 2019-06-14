@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="it" xmlns:th="http://www.thymeleaf.org"
-	xmlns="htttp://www.w3.org/1999/html">
+<html lang="en">
 <head>
-<title>Silph &mdash; Admin Login</title>
+<title>Silph &mdash; AdminDash</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,8 +76,6 @@
 					</div>
 
 					<div class="col-6 col-xl-2 text-right" data-aos="fade-down">
-						<div class="d-none d-xl-inline-block"></div>
-
 						<div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
 							style="position: relative; top: 3px;">
 							<a href="#" class="site-menu-toggle js-menu-toggle text-black"><span
@@ -101,59 +98,48 @@
 					<div class="col-md-7">
 						<div class="row mb-5">
 							<div class="col-12 ">
-								<h2 class="site-section-heading text-center">Accedi</h2>
+								<h2 class="site-section-heading text-center">Serivizi Admin</h2>
 							</div>
 						</div>
-
-						<div class="row justify-content-center">
-							<form th:action="@{/login}" method="POST"
-								th:object="${silphStaff}">
-								<div class="row justify-content-center">
-									<label class="text-black" for="nome">Nome Utente</label> <input
-										type="text" id="nome" th:field="*{username}"
-										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p><br>
-								<div class="row justify-content-center" >
-									<label class="text-black" for="psswd">Password</label> <input
-										type="password" id="passwd" th:field="*{password}"
-										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('password')}"
-										th:errors="*{password}"></p>
-								<br>
-								<div class="row justify-content-center">
-									<input type="submit" value="Conferma"
-										class="btn btn-primary py-2 px-4 text-white">
+							<div class="site-section text-center">
+								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/admin/inserisciFoto';">
+									<h3 class="text-white h4">Inserisci foto</h3>
 								</div>
-							</form>
-						</div>
+								<br>
+								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/admin/inserisciAlbum';">
+									<h3 class="text-white h4">Inserisci album</h3>
+								</div>
+								<br>
+								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/admin/inserisciFotografo';">
+									<h3 class="text-white h4">Inserisci fotografo</h3>
+								</div>
+							</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
-	</div>
 
-
-	<div class="footer py-4">
-		<div class="container-fluid text-center">
-			<p>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				Copyright &copy;
-				<script data-cfasync="false"
-					src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-				<script>document.write(new Date().getFullYear());</script>
-				All rights reserved | This template is made with <i
-					class="icon-heart-o" aria-hidden="true"></i> by <a
-					href="https://colorlib.com" target="_blank">Colorlib</a>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-			</p>
+		<div class="footer py-4">
+			<div class="container-fluid text-center">
+				<p>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;
+					<script data-cfasync="false"
+						src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+					<script>document.write(new Date().getFullYear());</script>
+					All rights reserved | This template is made with <i
+						class="icon-heart-o" aria-hidden="true"></i> by <a
+						href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+			</div>
 		</div>
+
+
+
+
+
 	</div>
-
-
-
-
-
 
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>

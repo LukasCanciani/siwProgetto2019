@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"
 	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; Admin Login</title>
+<title>Silph &mdash; Admin</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -101,24 +101,38 @@
 					<div class="col-md-7">
 						<div class="row mb-5">
 							<div class="col-12 ">
-								<h2 class="site-section-heading text-center">Accedi</h2>
+								<h2 class="site-section-heading text-center">Inserisci fotografo</h2>
 							</div>
 						</div>
 
 						<div class="row justify-content-center">
-							<form th:action="@{/login}" method="POST"
-								th:object="${silphStaff}">
+							<form th:action="@{/salvaFotografo}" method="POST"
+								th:object="${foto}">
 								<div class="row justify-content-center">
-									<label class="text-black" for="nome">Nome Utente</label> <input
-										type="text" id="nome" th:field="*{username}"
+									<label class="text-black" for="nome">Nome</label> <input
+										type="text" id="nome" th:field="*{nome}"
 										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p><br>
+								</div><p class="error" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p><br>
 								<div class="row justify-content-center" >
-									<label class="text-black" for="psswd">Password</label> <input
-										type="password" id="passwd" th:field="*{password}"
+									<label class="text-black" for="uri">URL Foto</label> <input
+										type="text" id="uri" th:field="*{uri}"
 										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('password')}"
-										th:errors="*{password}"></p>
+								</div><p class="error" th:if="${#fields.hasErrors('uri')}"
+										th:errors="*{uri}"></p>
+								<br>
+								<div class="row justify-content-center" >
+									<label class="text-black" for="fotografo">Id fotografo</label> <input
+										type="text" id="fotografo" th:field="*{fotografo}"
+										class="form-control">
+								</div><p class="error" th:if="${#fields.hasErrors('fotografo')}"
+										th:errors="*{fotografo}"></p>
+								<br>
+								<div class="row justify-content-center" >
+									<label class="text-black" for="album">Album</label> <input
+										type="text" id="album" th:each="album : ${listaAlbum}" th:field="*{album}"
+										class="form-control">
+								</div><p class="error" th:if="${#fields.hasErrors('listaAlbum')}"
+										th:errors="*{listaAlbum}"></p>
 								<br>
 								<div class="row justify-content-center">
 									<input type="submit" value="Conferma"
