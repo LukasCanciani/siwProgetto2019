@@ -41,7 +41,7 @@ public class SilphStaffController {
 			}
 			else {
 				//successo
-				return "successo.html";
+				return "admin.html";
 			}
 			//Se non ha errori, controllare se è uguale a controll la password!! poi decidi se dare eerrrore o procedere
 			
@@ -56,6 +56,26 @@ public class SilphStaffController {
 	public String loginForm(Model model) {
 		model.addAttribute("silphStaff",new SilphStaff());
 		return "login.html";
+	}
+	
+	@RequestMapping(value ="/inserimento", method = RequestMethod.GET)
+	public String inserimento(Model model) {
+		return "inserimento.html";
+	}
+	
+	@RequestMapping(value = "inserimentoFoto")
+	public String inserimentoFoto(Model model) {
+		return "inserimentoFoto.html";
+	}
+	
+	@RequestMapping(value = "inserimentoFotografo")
+	public String inserimentoFotografo(Model model) {
+		return "inserimentoFotografo.html";
+	}
+	
+	@RequestMapping(value = "inserimentoAlbum")
+	public String inserimentoAlbum(Model model) {
+		return "inserimentoAlbum.html";
 	}
 	
 	@RequestMapping(value ="/addFoto")

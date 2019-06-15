@@ -19,4 +19,9 @@ public class SilphStaffService {
 		return silphStaffRepository.findByUsernameAndPassword(username, password);
 	}
 	
+	@Transactional
+	public void salvaSilphStaff(SilphStaff silphStaff) {
+		this.silphStaffRepository.save(silphStaff);
+	}
+	
 }

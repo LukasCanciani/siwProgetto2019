@@ -62,18 +62,19 @@
 						<nav
 							class="site-navigation position-relative text-right text-lg-center"
 							role="navigation">
-
+						<form th:action="@{/login}" method="GET">
 							<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-								<li class="active"><a href="index.html">Home</a></li>
+								<li class="active"><a th:href="@{'/index'}">Home</a></li>
 								<li class="has-children"><a href="single.html">Gallery</a>
 									<ul class="dropdown">
 										<li><a href="#">Foto</a></li>
 										<li><a href="#">Album</a></li>
 										<li><a href="#">Fotografi</a></li>
 									</ul></li>
-								<li><a href="/loginForm">StaffOnly</a></li>
+								<li><a th:href="@{'/loginForm'}">StaffOnly</a></li>
 								<li><a href="about.html">Carrello</a></li>
 							</ul>
+						</form>
 						</nav>
 					</div>
 
