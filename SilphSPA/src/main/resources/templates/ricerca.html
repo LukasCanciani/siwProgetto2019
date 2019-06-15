@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+	xmlns="htttp://www.w3.org/1999/html">
 <head>
 <title>Silph &mdash; AdminDash</title>
 <meta charset="utf-8">
@@ -98,51 +99,22 @@
 					<div class="col-md-7">
 						<div class="row mb-5">
 							<div class="col-12 ">
-								<h2 class="site-section-heading text-center">Serivizi Admin</h2>
+								<h2 class="site-section-heading text-center">Ricerca</h2>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5"
-									style="curson : pointer;" onclick="window.location='/inserimento';">
-									
-								<div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
-									<img src="images/icons/upload.png" width="80" height="80" alt="icona Upload">
-									<br><br>
-									
-									<h3 class="text-black h4">Inserimento Dati</h3>
-									<h4>Inserisci:</h4>
-									<ul>
-									<li>Foto</li>
-									<li>Album</li>
-									<li>Fotografi</li>
-									</ul>
+							<div class="site-section text-center">
+								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/ricercaFoto';">
+									<h3 class="text-white h4">Ricerca foto</h3> 
+								</div>
+								<br>
+								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/ricercaAlbum';">
+									<h3 class="text-white h4">Ricerca album</h3>
+								</div>
+								<br>
+								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/ricercaFotografo';">
+									<h3 class="text-white h4">Ricerca fotografo</h3>
 								</div>
 							</div>
-							<div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5"
-									style="curson : pointer;" onclick="window.location='/consultaDati';">
-								<div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
-									<img src="images/icons/search.png" width="80" height="80" alt="icona ricerca">
-									<br><br>
-									<h3 class="text-black h4">Consulta Dati </h3>
-									<h4>Cerca:</h4>
-									<ul>
-									<li>Foto</li>
-									<li>Album</li>
-									<li>Fotografi</li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5"
-									style="curson : pointer;" onclick="window.location='/richieste';">
-								<div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
-									<img src="images/icons/paper.png" width="80" height="80" alt="icona richieste">
-									<br><br>
-									<h3 class="text-black h4">Richieste</h3>
-									<h4>Gestisci:</h4>
-									<p>Accedi alle richieste di utilizzo sottomesse dai clienti</p>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

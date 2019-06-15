@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; AdminDash</title>
+<title>Silph &mdash; Admin</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -76,6 +77,8 @@
 					</div>
 
 					<div class="col-6 col-xl-2 text-right" data-aos="fade-down">
+						<div class="d-none d-xl-inline-block"></div>
+
 						<div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
 							style="position: relative; top: 3px;">
 							<a href="#" class="site-menu-toggle js-menu-toggle text-black"><span
@@ -98,77 +101,63 @@
 					<div class="col-md-7">
 						<div class="row mb-5">
 							<div class="col-12 ">
-								<h2 class="site-section-heading text-center">Serivizi Admin</h2>
+								<h2 class="site-section-heading text-center">Cerca fotografo</h2>
+								
+								
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5"
-									style="curson : pointer;" onclick="window.location='/inserimento';">
-									
-								<div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
-									<img src="images/icons/upload.png" width="80" height="80" alt="icona Upload">
-									<br><br>
-									
-									<h3 class="text-black h4">Inserimento Dati</h3>
-									<h4>Inserisci:</h4>
-									<ul>
-									<li>Foto</li>
-									<li>Album</li>
-									<li>Fotografi</li>
-									</ul>
+
+						<div class="row justify-content-center">
+							<form th:action="@{/risultatiFotografoNomeCognome}" method="POST"
+								th:object="${stringaRicerca}">
+								<p class="error" th:if="${#fields.hasErrors('stringa1')}"
+										th:errors="*{stringa1}">
+								<h4> Lascia in bianco i campi non necessari</h4>
+								<div class="row justify-content-center">
+								<label class="text-black" for="nome">Nome</label> <input
+										type="text" id="nome" th:field="*{stringa1}"
+										class="form-control">
 								</div>
-							</div>
-							<div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5"
-									style="curson : pointer;" onclick="window.location='/consultaDati';">
-								<div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
-									<img src="images/icons/search.png" width="80" height="80" alt="icona ricerca">
-									<br><br>
-									<h3 class="text-black h4">Consulta Dati </h3>
-									<h4>Cerca:</h4>
-									<ul>
-									<li>Foto</li>
-									<li>Album</li>
-									<li>Fotografi</li>
-									</ul>
+								<br>
+								<div class="row justify-content-center" >
+									<label class="text-black" for="cognome">Cognome</label> <input
+										type="text" id="cognome" th:field="*{stringa2}"
+										class="form-control">
 								</div>
-							</div>
-							<div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5"
-									style="curson : pointer;" onclick="window.location='/richieste';">
-								<div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
-									<img src="images/icons/paper.png" width="80" height="80" alt="icona richieste">
-									<br><br>
-									<h3 class="text-black h4">Richieste</h3>
-									<h4>Gestisci:</h4>
-									<p>Accedi alle richieste di utilizzo sottomesse dai clienti</p>
+								<div class="row justify-content-center">
+									<input type="submit" value="Cerca"
+										class="btn btn-primary py-2 px-4 text-white">
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
-
-		<div class="footer py-4">
-			<div class="container-fluid text-center">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script data-cfasync="false"
-						src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-					<script>document.write(new Date().getFullYear());</script>
-					All rights reserved | This template is made with <i
-						class="icon-heart-o" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
-		</div>
-
-
-
-
-
 	</div>
+
+
+	<div class="footer py-4">
+		<div class="container-fluid text-center">
+			<p>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;
+				<script data-cfasync="false"
+					src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+				<script>document.write(new Date().getFullYear());</script>
+				All rights reserved | This template is made with <i
+					class="icon-heart-o" aria-hidden="true"></i> by <a
+					href="https://colorlib.com" target="_blank">Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</p>
+		</div>
+	</div>
+
+
+
+
+
 
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>

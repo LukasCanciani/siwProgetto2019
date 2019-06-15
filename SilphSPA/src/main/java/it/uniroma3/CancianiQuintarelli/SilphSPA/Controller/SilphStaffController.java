@@ -81,4 +81,13 @@ public class SilphStaffController {
 		return "inserimentoAlbum.html";
 	}
 	
+	@RequestMapping(value="/consultaDati")
+	public String ricerca() {
+		return "ricerca.html";
+	}
+	@RequestMapping(value="/ricercaFotografo")
+	public String ricercaFotografo() {
+		return "ricercaFotografo.html";
+	}
+	
 }

@@ -46,4 +46,9 @@ public class FotografoService {
 	public List<Fotografo> trovaFotografoPerNomeCognome(String nomeFotografo, String cognomeFotografo){
 		return this.fr.findByNomeAndCognome(nomeFotografo, cognomeFotografo);
 	}
+	
+	@Transactional
+	public List<Fotografo> trovaFotografoPerIdNomeCognoe(Long id, String nome, String cognome){
+		return this.fr.findByIdAndNomeAndCognome(id, nome, cognome);
+	}
 }

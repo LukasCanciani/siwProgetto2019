@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Fotografo {
+public class Fotografo implements Comparable<Fotografo> {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
@@ -66,5 +66,15 @@ public class Fotografo {
 
 	public void setFotoProfilo(String fotoProfilo) {
 		this.fotoProfilo = fotoProfilo;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.id.hashCode();
+	}
+
+	@Override
+	public int compareTo(Fotografo o) {
+		return this.getId().compareTo(o.getId());
 	}
 }

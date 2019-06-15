@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th= "http://www.thymeleaf.org" xmlns="htttp://www.w3.org/1999/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<ul>
+	<li th:each =" fotografo : ${risultati}">
+	<p th:text="${fotografo.nome} + ' ' + ${fotografo.cognome}"> Mario cart</p>
+	</li>
+	</ul>
+</body>
+</html>
