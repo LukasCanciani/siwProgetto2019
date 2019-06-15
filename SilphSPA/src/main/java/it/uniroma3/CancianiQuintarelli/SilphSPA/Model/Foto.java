@@ -1,12 +1,10 @@
 package it.uniroma3.CancianiQuintarelli.SilphSPA.Model;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -19,8 +17,8 @@ public class Foto {
 	
 	private String uri;
 	
-	@ManyToMany(mappedBy="foto")
-	private List<Album> listaAlbum;
+	@ManyToOne
+	private Album album;
 	
 	@ManyToOne
 	private Fotografo fotografo;
@@ -45,12 +43,12 @@ public class Foto {
 		this.uri = uri;
 	}
 
-	public List<Album> getListaAlbum() {
-		return listaAlbum;
+	public Album getAlbum() {
+		return this.album;
 	}
 
-	public void setListaAlbum(List<Album> album) {
-		this.listaAlbum = album;
+	public void setAlbum(Album album) {
+		this.album = album;
 	}
 
 	public Fotografo getFotografo() {
