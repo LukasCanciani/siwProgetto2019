@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Album;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Foto;
+import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Fotografo;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.SilphStaff;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.SilphStaffService;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.SilphStaffValidator;
@@ -62,24 +64,22 @@ public class SilphStaffController {
 		return "inserimento.html";
 	}
 	
-	@RequestMapping(value = "inserimentoFoto")
+	@RequestMapping(value = "/inserimentoFoto")
 	public String inserimentoFoto(Model model) {
-		return "inserimentoFoto.html";
-	}
-	
-	@RequestMapping(value = "inserimentoFotografo")
-	public String inserimentoFotografo(Model model) {
-		return "inserimentoFotografo.html";
-	}
-	
-	@RequestMapping(value = "inserimentoAlbum")
-	public String inserimentoAlbum(Model model) {
-		return "inserimentoAlbum.html";
-	}
-	
-	@RequestMapping(value ="/addFoto")
-	public String addfotografo(Model model) {
 		model.addAttribute("foto",new Foto());
 		return "inserimentoFoto.html";
 	}
+	
+	@RequestMapping(value = "/inserimentoFotografo")
+	public String inserimentoFotografo(Model model) {
+		model.addAttribute("fotografo",new Fotografo());
+		return "inserimentoFotografo.html";
+	}
+	
+	@RequestMapping(value = "/inserimentoAlbum")
+	public String inserimentoAlbum(Model model) {
+		model.addAttribute("album",new Album());
+		return "inserimentoAlbum.html";
+	}
+	
 }
