@@ -25,7 +25,7 @@ public class Album {
 	private List<Foto> foto;
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {

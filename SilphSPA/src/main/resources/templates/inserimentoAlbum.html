@@ -106,20 +106,20 @@
 						</div>
 
 						<div class="row justify-content-center">
-							<form th:action="@{/salvaFotografo}" method="POST"
-								th:object="${album}">
+							<form th:action="@{/inserisciAlbum}" method="POST"
+								th:object="${albumForm}">
 								<div class="row justify-content-center">
 									<label class="text-black" for="nome">Nome</label> <input
 										type="text" id="nome" th:field="*{nome}"
 										class="form-control">
 								</div><p class="error" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p><br>
-								<div class="row justify-content-center" >
-									<label class="text-black" for="cognome">Id fotografo</label> <input
-										type="text" id="fotografo" th:field="*{fotografo}"
+								
+								<div class="row justify-content-center">
+									<label class="text-black" for="idFotografo">Id Fotografo</label> <input
+										type="text" id="idFotografo" th:field="*{idFotografo}"
 										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('fotografo')}"
-										th:errors="*{fotografo}"></p>
-								<br>
+								</div><p class="error" th:if="${#fields.hasErrors('idFotografo')}" th:errors="*{idFotografo}"></p><br>
+								
 								<div class="row justify-content-center">
 									<input type="submit" value="Conferma"
 										class="btn btn-primary py-2 px-4 text-white">
