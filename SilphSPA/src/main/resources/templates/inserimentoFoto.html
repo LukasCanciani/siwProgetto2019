@@ -106,8 +106,8 @@
 						</div>
 
 						<div class="row justify-content-center">
-							<form th:action="@{/salvaFotografo}" method="POST"
-								th:object="${foto}">
+							<form th:action="@{/inserisciFoto}" method="POST"
+								th:object="${fotoForm}">
 								<div class="row justify-content-center">
 									<label class="text-black" for="nome">Nome</label> <input
 										type="text" id="nome" th:field="*{nome}"
@@ -121,18 +121,18 @@
 										th:errors="*{uri}"></p>
 								<br>
 								<div class="row justify-content-center" >
-									<label class="text-black" for="fotografo">Id fotografo</label> <input
-										type="text" id="fotografo" th:field="*{fotografo}"
+									<label class="text-black" for="idFotografo">Id fotografo</label> <input
+										type="text" id="idFotografo" th:field="*{idFotografo}"
 										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('fotografo')}"
-										th:errors="*{fotografo}"></p>
+								</div><p class="error" th:if="${#fields.hasErrors('idFotografo')}"
+										th:errors="*{idFotografo}"></p>
 								<br>
 								<div class="row justify-content-center" >
-									<label class="text-black" for="album">Id album</label> <input
-										type="text" id="album" th:field="*{album}"
+									<label class="text-black" for="idAlbum">Id album</label> <input
+										type="text" id="idAlbum" th:field="*{idAlbum}"
 										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('album')}"
-										th:errors="*{album}"></p>
+								</div><p class="error" th:if="${#fields.hasErrors('idAlbum')}"
+										th:errors="*{idAlbum}"></p>
 								<br>
 								<div class="row justify-content-center">
 									<input type="submit" value="Conferma"

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Repository.AlbumRepository;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Album;
+import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Fotografo;
 
 @Service
 public class AlbumService {
@@ -20,6 +21,12 @@ public class AlbumService {
 	public List<Album> trovaAlbumNome(String nome){
 		return albumRepository.findByNome(nome);
 	}
+	
+	@Transactional
+	public List<Album> trovaAlbumsAssociatiAUnFotografo(Fotografo fotografo){
+		return this.albumRepository.findByFotografo(fotografo);
+	}
+	
 	@Transactional
 	public Album trovaAlbumId(Long id) {
 		try {

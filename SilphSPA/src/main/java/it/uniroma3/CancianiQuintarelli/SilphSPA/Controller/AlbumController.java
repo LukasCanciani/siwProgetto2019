@@ -54,7 +54,7 @@ public class AlbumController {
 			 albums.add(album);
 			 fotografo.setAlbum(albums);
 			 albumService.salvaAlbum(album);
-			 return "successo.html";
+			 return "admin.html";
 		 }else {
 			 return "inserimentoAlbum.html";
 		 } 

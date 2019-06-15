@@ -30,7 +30,7 @@ public class FotografoController {
 		
 		if(!bindingResult.hasErrors()) {
 			this.fs.salvaFotografo(fotografo);
-			return "successo.html";
+			return "admin.html";
 		}
 		else {
 			return "inserimentoFotografo.html";

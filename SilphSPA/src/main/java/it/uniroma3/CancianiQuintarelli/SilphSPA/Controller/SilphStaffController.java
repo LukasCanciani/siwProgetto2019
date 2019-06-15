@@ -10,9 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.AlbumForm;
-import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Foto;
+import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.FotoForm;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Fotografo;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.SilphStaff;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.SilphStaffService;
@@ -66,7 +65,7 @@ public class SilphStaffController {
 	
 	@RequestMapping(value = "/inserimentoFoto")
 	public String inserimentoFoto(Model model) {
-		model.addAttribute("foto",new Foto());
+		model.addAttribute("fotoForm",new FotoForm());
 		return "inserimentoFoto.html";
 	}
 	
