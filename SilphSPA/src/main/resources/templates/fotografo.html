@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"
 	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; AdminDash</title>
+<title>Silph &mdash; Welcome</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,6 +35,7 @@
 
 	<div class="site-wrap">
 
+		<!-- Servono?? -->
 		<div class="site-mobile-menu">
 			<div class="site-mobile-menu-header">
 				<div class="site-mobile-menu-close mt-3">
@@ -47,43 +48,36 @@
 
 
 
-		<header class="site-navbar py-3 border-bottom" role="banner">
+		<header class="site-navbar py-3" role="banner">
 
 			<div class="container-fluid">
 				<div class="row align-items-center">
 
 					<div class="col-6 col-xl-2" data-aos="fade-down">
 						<h1 class="mb-0">
-							<a href="index.html" class="text-black h2 mb-0">Silph</a>
+							<a href="/" class="text-black h2 mb-0">Siph</a>
 						</h1>
 					</div>
 					<div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
 						<nav
 							class="site-navigation position-relative text-right text-lg-center"
 							role="navigation">
-
+						<form th:action="@{/login}" method="GET">
 							<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-								<li><a href="index.html">Home</a></li>
+								<li class="active"><a th:href="@{'/index'}">Home</a></li>
 								<li class="has-children"><a href="single.html">Gallery</a>
 									<ul class="dropdown">
 										<li><a href="#">Foto</a></li>
 										<li><a href="#">Album</a></li>
 										<li><a href="/fotografi">Fotografi</a></li>
 									</ul></li>
-								<li><a href="/admin">StaffOnly</a></li>
+								<li><a th:href="@{'/admin'}">StaffOnly</a></li>
 								<li><a href="about.html">Carrello</a></li>
 							</ul>
+						</form>
 						</nav>
 					</div>
 
-					<div class="col-6 col-xl-2 text-right" data-aos="fade-down">
-						<div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
-							style="position: relative; top: 3px;">
-							<a href="#" class="site-menu-toggle js-menu-toggle text-black"><span
-								class="icon-menu h3"></span></a>
-						</div>
-
-					</div>
 
 				</div>
 			</div>
@@ -91,37 +85,56 @@
 		</header>
 
 
+		
 
-		<div class="site-section" data-aos="fade">
-			<div class="container-fluid">
 
-				<div class="row justify-content-center">
-					<div class="col-md-7">
-						<div class="row mb-5">
-							<div class="col-12 ">
-								<h2 class="site-section-heading text-center">Ricerca</h2>
-							</div>
-						</div>
-							<div class="site-section text-center">
-								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/cercaFotografoNomeCognome';">
-									<h3 class="text-white h4">Ricerca per Nome e Cognome</h3> 
-								</div>
-								<br>
-								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/cercaFotografoId';">
-									<h3 class="text-white h4">Ricerca per id</h3>
-								</div>
-								<br>
-								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/consultaDati';">
-									<h3 class="text-white h4">Torna alla ricerca</h3>
-								</div>
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
+
+
+
+W
+    <div class="container-fluid">
+      
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="row mb-5 site-section">
+            <div class="col-12 ">
+              <h2 class="site-section-heading text-center" 
+              th:text="${fotografo.nome} + ' ' +${fotografo.cognome} + ' -ID '+${fotografo.id}"
+              >Mario Rossi</h2>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-md-7">
+            <div style="width: 500px; height: px; overflow: hidden" class="" >
+              <img th:src="@{fotografo.fotoProfilo}" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-4 ml-auto">
+               <div class="row site-section">
+            <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5" th:each="alb : ${fotografo.album}">
+              <h2 class="text-black font-weight-light mb-4" th:text="${alb.nome}">Natura</h2>
+            </div>
+            
+        </div>
+              </div>
+          </div>
+    
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
 
 		<div class="footer py-4">
-			<div class="container-fluid text-center">
+			<div class="container-fluid">
 				<p>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
@@ -137,7 +150,7 @@
 		</div>
 
 
-
+	
 
 
 	</div>

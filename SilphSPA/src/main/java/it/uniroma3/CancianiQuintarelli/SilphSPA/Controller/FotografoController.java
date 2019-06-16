@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -51,6 +52,8 @@ public class FotografoController {
 		return "ricercaFotografoId.html";
 	}
 	
+	
+	
 	@RequestMapping(value="/risultatiFotografoNomeCognome", method = RequestMethod.POST)
 	public String risultatiFotografoNomeCognome(@ModelAttribute("stringaRicerca") StringaRicerca sr, Model model, BindingResult br) {
 		List<Fotografo> risultati;
@@ -88,9 +91,26 @@ public class FotografoController {
 			br.rejectValue("stringa1", "wrong");
 			return "ricercaFotografoNomeCognome.html";
 		}else {
-			model.addAttribute("risultati", risultati);
+			model.addAttribute("fotografo", risultati);
 			return "fotografo.html";
 		}
 	}
+		
+	@RequestMapping(value="/fotografi")
+	public String fotografi(Model model) {
+		model.addAttribute("risultati", this.fs.tutti());
+		return "listaFotografi.html";
 	
+	}
+	
+	@RequestMapping(value="/fotografo/{id}", method=RequestMethod.GET)
+	public String fotografo(@PathVariable("id") Long id, Model model) {
+		Fotografo fotografo = this.fs.trovaFotografoPerId(id);
+		if ( fotografo == null) {
+			return "/fotografi";
+		} else {
+			model.addAttribute("fotografo", fotografo);
+			return "fotografo.html";
+		}
+	}
 }

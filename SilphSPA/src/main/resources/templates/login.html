@@ -68,7 +68,7 @@
 									<ul class="dropdown">
 										<li><a href="#">Foto</a></li>
 										<li><a href="#">Album</a></li>
-										<li><a href="#">Fotografi</a></li>
+										<li><a href="/fotografi">Fotografi</a></li>
 									</ul></li>
 								<li><a href="/admin">StaffOnly</a></li>
 								<li><a href="about.html">Carrello</a></li>
@@ -109,9 +109,9 @@
 							<form name="f" th:action="@{/login}" method="post">
 								<fieldset>
 									<div th:if="${param.error}" class="alert alert-error">
-										Invalid username and password.</div>
+										Credenziali non valide</div>
 									<div th:if="${param.logout}" class="alert alert-success">
-										You have been logged out.</div>
+										Scollegato con successo</div>
 									<div class="row justify-content-center">
 										<label class="text-black" for="nome">Nome Utente</label> <input
 											type="text" id="username" name="username"
