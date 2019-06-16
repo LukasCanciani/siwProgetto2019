@@ -16,6 +16,8 @@ public class SilphStaff {
 	
 	private String username;
 	
+	private String role;
+	
 	private String password;
 	
 	
@@ -34,5 +36,13 @@ public class SilphStaff {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

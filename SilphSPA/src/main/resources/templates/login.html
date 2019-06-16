@@ -70,7 +70,7 @@
 										<li><a href="#">Album</a></li>
 										<li><a href="#">Fotografi</a></li>
 									</ul></li>
-								<li><a href="/loginForm">StaffOnly</a></li>
+								<li><a href="/admin">StaffOnly</a></li>
 								<li><a href="about.html">Carrello</a></li>
 							</ul>
 						</nav>
@@ -106,24 +106,28 @@
 						</div>
 
 						<div class="row justify-content-center">
-							<form th:action="@{/login}" method="POST"
-								th:object="${silphStaff}">
-								<div class="row justify-content-center">
-									<label class="text-black" for="nome">Nome Utente</label> <input
-										type="text" id="nome" th:field="*{username}"
-										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p><br>
-								<div class="row justify-content-center" >
-									<label class="text-black" for="psswd">Password</label> <input
-										type="password" id="passwd" th:field="*{password}"
-										class="form-control">
-								</div><p class="error" th:if="${#fields.hasErrors('password')}"
-										th:errors="*{password}"></p>
-								<br>
-								<div class="row justify-content-center">
-									<input type="submit" value="Conferma"
-										class="btn btn-primary py-2 px-4 text-white">
-								</div>
+							<form name="f" th:action="@{/login}" method="post">
+								<fieldset>
+									<div th:if="${param.error}" class="alert alert-error">
+										Invalid username and password.</div>
+									<div th:if="${param.logout}" class="alert alert-success">
+										You have been logged out.</div>
+									<div class="row justify-content-center">
+										<label class="text-black" for="nome">Nome Utente</label> <input
+											type="text" id="username" name="username"
+											class="form-control" />
+									</div>
+									<br>
+									<div class="row justify-content-center">
+										<label class="text-black" for="psssword">Password</label> <input
+											type="password" id="password" name="password"
+											class="form-control" />
+									</div>
+									<br>
+									<div class="row justify-content-center">
+										<button type="submit" class="btn btn-primary py-2 px-4 text-white">Log in</button>
+									</div>
+								</fieldset>
 							</form>
 						</div>
 					</div>

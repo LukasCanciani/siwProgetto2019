@@ -4,6 +4,9 @@ package it.uniroma3.CancianiQuintarelli.SilphSPA.Controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,16 +22,16 @@ import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.SilphStaffValidator;
 
 @Controller
 public class SilphStaffController {
-	
+
 	@Autowired
 	private SilphStaffValidator silphStaffValidator;
-	
+
 	@Autowired
 	private SilphStaffService silphStaffService;
-	
-	@RequestMapping(value ="/login", method = RequestMethod.POST)
+
+	/*@RequestMapping(value ="/login", method = RequestMethod.POST)
 	public String login(@Valid @ModelAttribute("silphStaff") SilphStaff silphStaff, Model model, BindingResult bindingResult) {
-		
+
 		this.silphStaffValidator.validate(silphStaff,bindingResult);
 		if(!bindingResult.hasErrors()) {
 			SilphStaff control =silphStaffService.login(silphStaff.getUsername(), silphStaff.getPassword());
@@ -44,43 +47,64 @@ public class SilphStaffController {
 				return "admin.html";
 			}
 			//Se non ha errori, controllare se è uguale a controll la password!! poi decidi se dare eerrrore o procedere
-			
+
 		}
 		else {
 			//Return con campo vuoto
 			return "login.html";
 		}
+	}*/
+	@RequestMapping(value="/admin")
+	public String login(Model model){
+		UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("username", details.getUsername());
+		return "admin.html";
 	}
 	
-	@RequestMapping(value ="/loginForm")
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginView() {
+        return "login";
+    }
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout() {
+		return "/logout";
+	}
+
+	/*@RequestMapping(value ="/loginForm")
 	public String loginForm(Model model) {
+		SilphStaff ss = new SilphStaff();
+		ss.setPassword("admin");
+		String adminPassword = new BCryptPasswordEncoder().encode("admin");
+		ss.setUsername(adminPassword);
+		silphStaffService.salvaSilphStaff(ss);
 		model.addAttribute("silphStaff",new SilphStaff());
 		return "login.html";
-	}
-	
+	}*/
+
 	@RequestMapping(value ="/inserimento", method = RequestMethod.GET)
 	public String inserimento(Model model) {
 		return "inserimento.html";
 	}
-	
+
 	@RequestMapping(value = "/inserimentoFoto")
 	public String inserimentoFoto(Model model) {
 		model.addAttribute("fotoForm",new FotoForm());
 		return "inserimentoFoto.html";
 	}
-	
+
 	@RequestMapping(value = "/inserimentoFotografo")
 	public String inserimentoFotografo(Model model) {
 		model.addAttribute("fotografo",new Fotografo());
 		return "inserimentoFotografo.html";
 	}
-	
+
 	@RequestMapping(value = "/inserimentoAlbum")
 	public String inserimentoAlbum(Model model) {
 		model.addAttribute("albumForm",new AlbumForm());
 		return "inserimentoAlbum.html";
 	}
-	
+
 	@RequestMapping(value="/consultaDati")
 	public String ricerca() {
 		return "ricerca.html";
@@ -89,5 +113,5 @@ public class SilphStaffController {
 	public String ricercaFotografo() {
 		return "ricercaFotografo.html";
 	}
-	
+
 }

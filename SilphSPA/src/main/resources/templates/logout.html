@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"
 	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; AdminDash</title>
+<title>Silph &mdash; Admin Login</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,7 +54,7 @@
 
 					<div class="col-6 col-xl-2" data-aos="fade-down">
 						<h1 class="mb-0">
-							<a href="index.html" class="text-black h2 mb-0">Silph</a>
+							<a href="/" class="text-black h2 mb-0">Silph</a>
 						</h1>
 					</div>
 					<div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
@@ -63,7 +63,7 @@
 							role="navigation">
 
 							<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-								<li><a href="index.html">Home</a></li>
+								<li><a href="/">Home</a></li>
 								<li class="has-children"><a href="single.html">Gallery</a>
 									<ul class="dropdown">
 										<li><a href="#">Foto</a></li>
@@ -77,6 +77,8 @@
 					</div>
 
 					<div class="col-6 col-xl-2 text-right" data-aos="fade-down">
+						<div class="d-none d-xl-inline-block"></div>
+
 						<div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
 							style="position: relative; top: 3px;">
 							<a href="#" class="site-menu-toggle js-menu-toggle text-black"><span
@@ -99,48 +101,58 @@
 					<div class="col-md-7">
 						<div class="row mb-5">
 							<div class="col-12 ">
-								<h2 class="site-section-heading text-center">Ricerca</h2>
+								<h2 class="site-section-heading text-center">Logout</h2>
 							</div>
 						</div>
-							<div class="site-section text-center">
-								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/ricercaFoto';">
-									<h3 class="text-white h4">Ricerca foto</h3> 
+						<div class="row justify-content-center">
+							<label class="text-black" for="nome">Confermare Logout?</label>
+						</div>
+						<div class="row justify-content-center">
+
+							<form name="f" th:action="@{/logout}" method="post">
+								<div class="row justify-content-center"></div>
+								<button type="submit"
+									class="btn btn-primary py-2 px-4 text-white">Conferma</button>
+							</form>
+							<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p>
+							<form name="f" th:action="@{/admin}" method="get">
+								<div class="row justify-content-center">
+									<button class="btn btn-primary py-2 px-4 text-white">Torna
+										indietro</button>
 								</div>
-								<br>
-								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/ricercaAlbum';">
-									<h3 class="text-white h4">Ricerca album</h3>
-								</div>
-								<br>
-								<div class="h-20 p-4 p-lg-2 bg-dark site-block-feature-7" style="curson : pointer;" onclick="window.location='/ricercaFotografo';">
-									<h3 class="text-white h4">Ricerca fotografo</h3>
-								</div>
-							</div>
+							</form>
+
+						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
-
-		<div class="footer py-4">
-			<div class="container-fluid text-center">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script data-cfasync="false"
-						src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-					<script>document.write(new Date().getFullYear());</script>
-					All rights reserved | This template is made with <i
-						class="icon-heart-o" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
-		</div>
-
-
-
-
-
 	</div>
+
+
+	<div class="footer py-4">
+		<div class="container-fluid text-center">
+			<p>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;
+				<script data-cfasync="false"
+					src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+				<script>
+					document.write(new Date().getFullYear());
+				</script>
+				All rights reserved | This template is made with <i
+					class="icon-heart-o" aria-hidden="true"></i> by <a
+					href="https://colorlib.com" target="_blank">Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</p>
+		</div>
+	</div>
+
+
+
+
+
 
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -162,10 +174,10 @@
 	<script src="js/main.js"></script>
 
 	<script>
-    $(document).ready(function(){
-      $('#lightgallery').lightGallery();
-    });
-  </script>
+		$(document).ready(function() {
+			$('#lightgallery').lightGallery();
+		});
+	</script>
 
 </body>
 </html>
