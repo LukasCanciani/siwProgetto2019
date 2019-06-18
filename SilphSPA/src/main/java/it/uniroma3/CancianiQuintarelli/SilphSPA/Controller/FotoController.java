@@ -5,10 +5,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,67 +29,85 @@ public class FotoController {
 
 	@Autowired
 	FotoService fotoService;
-	
+
 	@Autowired
 	AlbumService albumService;
-	
+
 	@Autowired
 	FotografoService fotografoService;
-	
+
 	@Autowired
 	FotoFormValidator fotoFormValidator;
-	
+
 	@RequestMapping(value="/inserisciFoto", method = RequestMethod.POST )
 	public String inserisciFoto(@Valid @ModelAttribute("fotoForm") FotoForm fotoForm, 
 			BindingResult bindingResult, Model model) {
-		 fotoFormValidator.validate(fotoForm, bindingResult);
-		 if ( !bindingResult.hasErrors()) {
-			 Long id;
-			 try {id = Long.parseLong(fotoForm.getIdFotografo());}
-			 catch (NumberFormatException e) {
-				 bindingResult.rejectValue("idFotografo", "wrong");
-				 return "inserimentoFoto.html";
-			 }
-			 Fotografo fotografo = fotografoService.trovaFotografoPerId(id);
-			 if ( fotografo == null) {
-				 bindingResult.rejectValue("idFotografo", "wrong");
-				 return "inserimentoFoto.html";
-			 }
-			 
-			 Long id2;
-			 try {id2 = Long.parseLong(fotoForm.getIdAlbum());}
-			 catch (NumberFormatException e) {
-				 bindingResult.rejectValue("idAlbum", "wrong");
-				 return "inserimentoFoto.html";
-			 }
-			 Album album = albumService.trovaAlbumId(id2);
-			 if ( album == null) {
-				 bindingResult.rejectValue("idAlbum", "wrong");
-				 return "inserimentoFoto.html";
-			 }
-			 
-			 for(Album alb : this.albumService.trovaAlbumsAssociatiAUnFotografo(fotografo)) {
-				 if(alb.getId()==album.getId()) {
-					 Foto foto = new Foto();
-					 foto.setNome(fotoForm.getNome());
-					 foto.setUri(fotoForm.getUri());
-					 foto.setFotografo(fotografo);
-					 foto.setAlbum(album);
-					 List<Foto> listaFoto = album.getFoto();
-					 listaFoto.add(foto);
-					 album.setFoto(listaFoto);
-					 listaFoto.clear();
-					 listaFoto = fotografo.getFoto();
-					 listaFoto.add(foto);
-					 fotografo.setFoto(listaFoto);
-					 this.fotoService.salvaFoto(foto);
-					 return "admin.html";
-				 }
-			 }
-			 
-			 return "inserimentoFoto.html";
-		 }else {
-			 return "inserimentoFoto.html";
-		 } 
+		fotoFormValidator.validate(fotoForm, bindingResult);
+		if ( !bindingResult.hasErrors()) {
+			Long id;
+			try {id = Long.parseLong(fotoForm.getIdFotografo());}
+			catch (NumberFormatException e) {
+				bindingResult.rejectValue("idFotografo", "wrong");
+				return "inserimentoFoto.html";
+			}
+			Fotografo fotografo = fotografoService.trovaFotografoPerId(id);
+			if ( fotografo == null) {
+				bindingResult.rejectValue("idFotografo", "wrong");
+				return "inserimentoFoto.html";
+			}
+
+			Long id2;
+			try {id2 = Long.parseLong(fotoForm.getIdAlbum());}
+			catch (NumberFormatException e) {
+				bindingResult.rejectValue("idAlbum", "wrong");
+				return "inserimentoFoto.html";
+			}
+			Album album = albumService.trovaAlbumId(id2);
+			if ( album == null) {
+				bindingResult.rejectValue("idAlbum", "wrong");
+				return "inserimentoFoto.html";
+			}
+
+			for(Album alb : this.albumService.trovaAlbumsAssociatiAUnFotografo(fotografo)) {
+				if(alb.getId()==album.getId()) {
+					Foto foto = new Foto();
+					foto.setNome(fotoForm.getNome());
+					foto.setUri(fotoForm.getUri());
+					foto.setFotografo(fotografo);
+					foto.setAlbum(album);
+					List<Foto> listaFoto = album.getFoto();
+					listaFoto.add(foto);
+					album.setFoto(listaFoto);
+					listaFoto.clear();
+					listaFoto = fotografo.getFoto();
+					listaFoto.add(foto);
+					fotografo.setFoto(listaFoto);
+					this.fotoService.salvaFoto(foto);
+					UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+					model.addAttribute("username", details.getUsername());
+					return "/admin.html";
+				}
+			}
+
+			bindingResult.rejectValue("idAlbum", "wrong");
+			return "inserimentoFoto.html";
+		}else {
+			return "inserimentoFoto.html";
+		} 
+	}
+	@RequestMapping(value="/foto",method=RequestMethod.GET)
+	public String listaFoto(Model model) {
+		model.addAttribute("risultati", this.fotoService.tutti());
+		return "listaFoto.html";
+	}
+	@RequestMapping(value="/foto/{id}", method=RequestMethod.GET)
+	public String album(@PathVariable("id") Long id, Model model) {
+		Foto foto = this.fotoService.trovaFotoPerId(id);
+		if ( foto == null) {
+			return "redirect:/foto";
+		} else {
+			model.addAttribute("foto", foto);
+			return "foto.html";
+		}
 	}
 }

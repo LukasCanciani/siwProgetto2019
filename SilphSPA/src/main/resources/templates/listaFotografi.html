@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"
 	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; Welcome</title>
+<title>Silph &mdash; ListaFotografi</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,8 +66,8 @@
 									<li class="active"><a th:href="@{'/index'}">Home</a></li>
 									<li class="has-children"><a href="single.html">Gallery</a>
 										<ul class="dropdown">
-											<li><a href="#">Foto</a></li>
-											<li><a href="#">Album</a></li>
+											<li><a href="/foto">Foto</a></li>
+											<li><a href="/album">Album</a></li>
 											<li><a href="/fotografi">Fotografi</a></li>
 										</ul></li>
 									<li><a th:href="@{'/admin'}">StaffOnly</a></li>
@@ -93,12 +93,13 @@
 			th:each="fotografo : ${risultati}">
 				<br>
 				<a th:href="@{'/fotografo/' + ${fotografo.id}}">
-				<div style="width: 200px; height: 200px; overflow: hidden" class="" >
+				<div style="width: 200px; height: 200px; overflow: hidden">
 					<img th:src="@{${fotografo.fotoProfilo}}" alt="image"
 						class="img-fluid w-50 h-50 rounded-circle mb-4">
 					<h2 class="text-black h4 font-weight-light mb-3 "
 						th:text="${fotografo.nome} + ' ' +${fotografo.cognome}">Mario
 						rossi</h2>
+				
 				</div>
 				</a>
 			</div>

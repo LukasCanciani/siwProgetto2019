@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,21 +22,23 @@ import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.FotografoValidator;
 
 @Controller
 public class FotografoController {
-	
+
 	@Autowired
 	private FotografoService fs;
-	
+
 	@Autowired
 	private FotografoValidator fv;
-	
-	
+
+
 	@RequestMapping(value ="/inserisciFotografo", method = RequestMethod.POST)
 	public String newFotografo(@Valid @ModelAttribute("fotografo") Fotografo fotografo, Model model, BindingResult bindingResult) {
 		this.fv.validate(fotografo, bindingResult);
-		
+
 		if(!bindingResult.hasErrors()) {
 			this.fs.salvaFotografo(fotografo);
-			return "admin.html";
+			UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("username", details.getUsername());
+			return "/admin.html";
 		}
 		else {
 			return "inserimentoFotografo.html";
@@ -51,9 +55,9 @@ public class FotografoController {
 		model.addAttribute("stringaRicerca", new StringaRicerca());
 		return "ricercaFotografoId.html";
 	}
-	
-	
-	
+
+
+
 	@RequestMapping(value="/risultatiFotografoNomeCognome", method = RequestMethod.POST)
 	public String risultatiFotografoNomeCognome(@ModelAttribute("stringaRicerca") StringaRicerca sr, Model model, BindingResult br) {
 		List<Fotografo> risultati;
@@ -89,20 +93,20 @@ public class FotografoController {
 		risultati = this.fs.trovaFotografoPerId(id);
 		if (risultati == null) {
 			br.rejectValue("stringa1", "wrong");
-			return "ricercaFotografoNomeCognome.html";
+			return "ricercaFotografoId.html";
 		}else {
 			model.addAttribute("fotografo", risultati);
 			return "fotografo.html";
 		}
 	}
-		
+
 	@RequestMapping(value="/fotografi")
 	public String fotografi(Model model) {
 		model.addAttribute("risultati", this.fs.tutti());
 		return "listaFotografi.html";
-	
+
 	}
-	
+
 	@RequestMapping(value="/fotografo/{id}", method=RequestMethod.GET)
 	public String fotografo(@PathVariable("id") Long id, Model model) {
 		Fotografo fotografo = this.fs.trovaFotografoPerId(id);

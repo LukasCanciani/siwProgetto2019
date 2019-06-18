@@ -37,4 +37,9 @@ public class FotoService {
 		}
 	}
 	
+	@Transactional
+	public List<Foto> tutti(){
+		return (List<Foto>) this.fr.findAll();
+	}
+	
 }

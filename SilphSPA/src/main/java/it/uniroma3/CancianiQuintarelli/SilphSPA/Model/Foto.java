@@ -58,4 +58,10 @@ public class Foto {
 	public void setFotografo(Fotografo fotografo) {
 		this.fotografo = fotografo;
 	}
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return this.id.hashCode();
+	}
 }

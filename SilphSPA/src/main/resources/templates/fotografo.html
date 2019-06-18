@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"
 	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; Welcome</title>
+<title>Silph &mdash; Fotografo</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,25 +10,24 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Josefin+Sans:300i,400,700"
 	rel="stylesheet">
-<link rel="stylesheet" href="fonts/icomoon/style.css">
+<link rel="stylesheet" href="../fonts/icomoon/style.css">
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
+<link rel="stylesheet" href="../css/jquery-ui.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/owl.theme.default.min.css">
 
-<link rel="stylesheet" href="css/lightgallery.min.css">
+<link rel="stylesheet" href="../css/lightgallery.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 
-<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 
-<link rel="stylesheet" href="css/swiper.css">
+<link rel="stylesheet" href="../css/swiper.css">
 
 <link rel="stylesheet" href="css/aos.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
@@ -62,19 +61,17 @@
 						<nav
 							class="site-navigation position-relative text-right text-lg-center"
 							role="navigation">
-						<form th:action="@{/login}" method="GET">
 							<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
 								<li class="active"><a th:href="@{'/index'}">Home</a></li>
 								<li class="has-children"><a href="single.html">Gallery</a>
 									<ul class="dropdown">
-										<li><a href="#">Foto</a></li>
-										<li><a href="#">Album</a></li>
+										<li><a href="/foto">Foto</a></li>
+										<li><a href="/album">Album</a></li>
 										<li><a href="/fotografi">Fotografi</a></li>
 									</ul></li>
 								<li><a th:href="@{'/admin'}">StaffOnly</a></li>
 								<li><a href="about.html">Carrello</a></li>
 							</ul>
-						</form>
 						</nav>
 					</div>
 
@@ -85,75 +82,63 @@
 		</header>
 
 
-		
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+				<div class="row mb-5 site-section">
+					<div class="col-12 ">
+						<h2 class="site-section-heading text-center"
+							th:text="${fotografo.nome} + ' ' +${fotografo.cognome}">Mario
+							Rossi</h2>
+						<h3 class="text-black text-center"
+							th:text="'ID - '+${fotografo.id}">ID - 0</h3>
+					</div>
+				</div>
 
+				<div class="row mb-5">
+					<div class="col-md-7">
+					<div style="width: 500px; height: 500px; overflow: hidden" class="" >
+						<img th:src="@{${fotografo.fotoProfilo}}"  alt="Image" class="img-fluid w-50 h-50 rounded-circle mb-4">
+							</div>
+					</div>
+					<div class="col-md-4 ml-auto">
+						<p class="text-left text-black h4"> I miei album: </p>
+						<ul style="list-style: none;">
+							<li class="text-black font-weight-light mb-4 h4 text-left"
+								th:each="alb : ${fotografo.album}">
+								<a th:href="@{'/album/'+${alb.id}}"  th:text="${alb.nome}">Natura</a>
+								</li>
+						</ul>
 
-
-
-
-
-W
-    <div class="container-fluid">
-      
-      <div class="row justify-content-center">
-        <div class="col-md-7">
-          <div class="row mb-5 site-section">
-            <div class="col-12 ">
-              <h2 class="site-section-heading text-center" 
-              th:text="${fotografo.nome} + ' ' +${fotografo.cognome} + ' -ID '+${fotografo.id}"
-              >Mario Rossi</h2>
-            </div>
-          </div>
-
-          <div class="row mb-5">
-            <div class="col-md-7">
-            <div style="width: 500px; height: px; overflow: hidden" class="" >
-              <img th:src="@{fotografo.fotoProfilo}" alt="Image" class="img-fluid">
-            </div>
-            <div class="col-md-4 ml-auto">
-               <div class="row site-section">
-            <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5" th:each="alb : ${fotografo.album}">
-              <h2 class="text-black font-weight-light mb-4" th:text="${alb.nome}">Natura</h2>
-            </div>
-            
-        </div>
-              </div>
-          </div>
-    
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
-		<div class="footer py-4">
-			<div class="container-fluid">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script data-cfasync="false"
-						src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-					<script>document.write(new Date().getFullYear());</script>
-					All rights reserved | This template is made with <i
-						class="icon-heart-o" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
+					</div>
+				</div>
 			</div>
 		</div>
-
-
-	
-
-
 	</div>
+
+
+
+	<div class="footer py-4 text-center">
+		<div class="container-fluid">
+			<p>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;
+				<script data-cfasync="false"
+					src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+				<script>
+					document.write(new Date().getFullYear());
+				</script>
+				All rights reserved | This template is made with <i
+					class="icon-heart-o" aria-hidden="true"></i> by <a
+					href="https://colorlib.com" target="_blank">Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			</p>
+		</div>
+	</div>
+
+
+
+
+
 
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -163,7 +148,6 @@ W
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.stellar.min.js"></script>
 	<script src="js/jquery.countdown.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/bootstrap-datepicker.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/aos.js"></script>
@@ -174,11 +158,6 @@ W
 
 	<script src="js/main.js"></script>
 
-	<script>
-    $(document).ready(function(){
-      $('#lightgallery').lightGallery();
-    });
-  </script>
 
 </body>
 </html>
