@@ -106,70 +106,79 @@
 							<div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5 mb-lg-5"
 								th:each="richiesta : ${richieste}">
 
-								<div class="h-100 p-4 p-lg-5 site-block-feature-7" style="background-color: gainsboro;">
-									<h3>RICHIESTA </h3>
-									<h3  th:text="'ID: ' + ${richiesta.id}">ID: 0</h3>
-									<br>
-									<span>Email:</span>
-									<p th:text="${richiesta.email}">email@prova.com </p>
-									<span>Descrizione:</span>
-									<p th:text="${richiesta.descrizione}"> Uso commerciale </p>
-									<span>Foto selezionate:</span><br><span th:each="fot : ${richiesta.foto}" th:text="${fot.id} + ' '"></span>
+								<div class="h-100 p-4 p-lg-5 site-block-feature-7"
+									style="background-color: gainsboro;">
+									<div>
+										<h3>RICHIESTA</h3>
+										<h3 th:text="'ID: ' + ${richiesta.id}">ID: 0</h3>
+										<br> <span>Email:</span>
+										<p th:text="${richiesta.email}">email@prova.com</p>
+										<span>Descrizione:</span>
+										<p th:text="${richiesta.descrizione}">Uso commerciale</p>
+										<span>Foto selezionate:</span><br> <span
+											th:each="fot : ${richiesta.foto}" th:text="${fot.id} + ' '"></span>
+									</div>
+									<a th:href="@{'/rimuoviRichiesta/'+${richiesta.id}}">
+										<div class="row justify-content-center ">
+											<div class="btn btn-primary py-2 px-4 text-white"
+												>Rimuovi
+												richiesta</div>
+										</div>
+									</a>
 								</div>
-							</div>	
+								</a>
+							</div>
+
+						</div>
 					</div>
+
+					<div class="footer py-4">
+						<div class="container-fluid text-center">
+							<p>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;
+								<script data-cfasync="false"
+									src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+								<script>
+									document.write(new Date().getFullYear());
+								</script>
+								All rights reserved | This template is made with <i
+									class="icon-heart-o" aria-hidden="true"></i> by <a
+									href="https://colorlib.com" target="_blank">Colorlib</a>
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</p>
+						</div>
+					</div>
+
+
+
+
+
 				</div>
-			</div>
-		</div>
 
-		<div class="footer py-4">
-			<div class="container-fluid text-center">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script data-cfasync="false"
-						src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
-					All rights reserved | This template is made with <i
-						class="icon-heart-o" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
-		</div>
+				<script src="js/jquery-3.3.1.min.js"></script>
+				<script src="js/jquery-migrate-3.0.1.min.js"></script>
+				<script src="js/jquery-ui.js"></script>
+				<script src="js/popper.min.js"></script>
+				<script src="js/bootstrap.min.js"></script>
+				<script src="js/owl.carousel.min.js"></script>
+				<script src="js/jquery.stellar.min.js"></script>
+				<script src="js/jquery.countdown.min.js"></script>
+				<script src="js/jquery.magnific-popup.min.js"></script>
+				<script src="js/bootstrap-datepicker.min.js"></script>
+				<script src="js/swiper.min.js"></script>
+				<script src="js/aos.js"></script>
 
+				<script src="js/picturefill.min.js"></script>
+				<script src="js/lightgallery-all.min.js"></script>
+				<script src="js/jquery.mousewheel.min.js"></script>
 
+				<script src="js/main.js"></script>
 
-
-
-	</div>
-
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/jquery.countdown.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/bootstrap-datepicker.min.js"></script>
-	<script src="js/swiper.min.js"></script>
-	<script src="js/aos.js"></script>
-
-	<script src="js/picturefill.min.js"></script>
-	<script src="js/lightgallery-all.min.js"></script>
-	<script src="js/jquery.mousewheel.min.js"></script>
-
-	<script src="js/main.js"></script>
-
-	<script>
-		$(document).ready(function() {
-			$('#lightgallery').lightGallery();
-		});
-	</script>
-
+				<script>
+					$(document).ready(function() {
+						$('#lightgallery').lightGallery();
+					});
+				</script>
 </body>
 </html>

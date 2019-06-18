@@ -38,6 +38,8 @@ public class FotografoController {
 			this.fs.salvaFotografo(fotografo);
 			UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("username", details.getUsername());
+			String message = "Inserito con successo nuovo fotografo";
+			model.addAttribute("general", message);
 			return "/admin.html";
 		}
 		else {

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Carrello;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Richiesta;
@@ -64,11 +64,23 @@ public class RichiestaController {
 		if(richieste.size()==0) {
 			UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("username", details.getUsername());
+			String message = "Nessuna richiesta da mostrare";
+			model.addAttribute("error", message);
 			return "admin.html";
 		}
 		else {
 			model.addAttribute("richieste", richieste);
 			return "listaRichieste.html";
+		}
+	}
+	@RequestMapping(value="/rimuoviRichiesta/{id}", method=RequestMethod.GET)
+	public String rimuoviRichiesta(@PathVariable("id") Long id, Model model) {
+		Richiesta richiesta = this.rs.trovaRichestaPerId(id);
+		if ( richiesta == null) {
+			return "redirect:/richieste";
+		} else {
+			this.rs.rimuoviRichiesta(richiesta);
+			return "redirect:/richieste";
 		}
 	}
 }

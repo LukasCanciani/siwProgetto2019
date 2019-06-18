@@ -86,6 +86,8 @@ public class FotoController {
 					this.fotoService.salvaFoto(foto);
 					UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 					model.addAttribute("username", details.getUsername());
+					String message = "Inserito con successo nuova foto";
+					model.addAttribute("general", message);
 					return "/admin.html";
 				}
 			}

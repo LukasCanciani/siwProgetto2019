@@ -19,7 +19,10 @@ public class RichiestaService {
 	private RichiestaRepository rr;
 	
 	
-	
+	@Transactional
+	public void rimuoviRichiesta(Richiesta richiesta) {
+		this.rr.delete(richiesta);
+	}
 	
 	@Transactional
 	public Richiesta salvaRichiesta(Richiesta richiesta) {

@@ -60,6 +60,8 @@ public class AlbumController {
 			albumService.salvaAlbum(album);
 			UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("username", details.getUsername());
+			String message = "Inserito con successo nuovo album";
+			model.addAttribute("general", message);
 			return "/admin.html";
 		}else {
 			return "inserimentoAlbum.html";
