@@ -37,5 +37,8 @@ public class Carrello {
 		this.foto.remove(fot);
 	}
 	
+	public void cleanCarrello() {
+		this.foto = new HashSet<>();
+	}
 	
 }

@@ -32,81 +32,80 @@
 </head>
 <body>
 
-	<div class="site-wrap">
 
-		<div class="site-mobile-menu">
-			<div class="site-mobile-menu-header">
-				<div class="site-mobile-menu-close mt-3">
-					<span class="icon-close2 js-menu-toggle"></span>
-				</div>
+
+	<div class="site-mobile-menu">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close mt-3">
+				<span class="icon-close2 js-menu-toggle"></span>
 			</div>
-			<div class="site-mobile-menu-body"></div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+
+
+
+	<header class="site-navbar py-3" role="banner">
+
+		<div class="container-fluid">
+			<div class="row align-items-center">
+
+				<div class="col-6 col-xl-2" data-aos="fade-down">
+					<h1 class="mb-0">
+						<a href="/" class="text-black h2 mb-0">Siph</a>
+					</h1>
+				</div>
+				<div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
+					<nav
+						class="site-navigation position-relative text-right text-lg-center"
+						role="navigation">
+						<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+							<li><a href="/">Home</a></li>
+							<li class="has-children"><a>GALLERIA</a>
+								<ul class="dropdown">
+									<li><a href="/foto">Foto</a></li>
+									<li><a href="/album">Album</a></li>
+									<li><a href="/fotografi">Fotografi</a></li>
+								</ul></li>
+							<li><a href="/admin">StaffOnly</a></li>
+							<li><a href="/carrello">Carrello</a></li>
+						</ul>
+					</nav>
+				</div>
+
+
+			</div>
 		</div>
 
+	</header>
 
 
-
-		<header class="site-navbar py-3" role="banner">
-
-			<div class="container-fluid">
-				<div class="row align-items-center">
-
-					<div class="col-6 col-xl-2" data-aos="fade-down">
-						<h1 class="mb-0">
-							<a href="/" class="text-black h2 mb-0">Siph</a>
-						</h1>
-					</div>
-					<div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
-						<nav
-							class="site-navigation position-relative text-right text-lg-center"
-							role="navigation">
-							<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-								<li><a href="/">Home</a></li>
-								<li class="has-children"><a>GALLERIA</a>
-									<ul class="dropdown">
-										<li><a href="/foto">Foto</a></li>
-										<li><a href="/album">Album</a></li>
-										<li><a href="/fotografi">Fotografi</a></li>
-									</ul></li>
-								<li><a href="/admin">StaffOnly</a></li>
-								<li><a href="/carrello">Carrello</a></li>
-							</ul>
-						</nav>
-					</div>
-
-
+	<div class="row justify-content-center" style="margin-top: -70px;">
+		<div class="justify-content-center">
+			<div class="row mb-5 site-section">
+				<div class="col-12">
+					<h2 class="site-section-heading text-center" th:text="${foto.nome}">Albero</h2>
+					<h3 class="text-black text-center" th:text="'ID - '+${foto.id}">ID - 0</h3>
+					<h3 class="text-black text-center">Album: <a th:href="@{'/album/' + ${foto.album.id}}" th:text="${foto.album.nome}"></a> </h3>
+					<h3 class="text-black text-center">Di: <a th:href="@{'/fotografo/' + ${foto.fotografo.id}}" th:text="${foto.fotografo.nome}+' '+${foto.fotografo.cognome}"></a> </h3>
 				</div>
 			</div>
 
-		</header>
-
-
-		<div class="row justify-content-center">
-			<div class="justify-content-center">
-				<div class="row mb-5 site-section">
-					<div class="col-12 ">
-						<h2 class="site-section-heading text-center"
-							th:text="${foto.nome}">Albero</h2>
-						<h3 class="text-black text-center" th:text="'ID - '+${foto.id}">ID
-							- 0</h3>
-					</div>
+			<div class="justify-content-center"
+				style="display: block; position: relative; top: 30%; transform: translateY(-50%); margin: 0 auto; max-width: 100%; max-height: 100%; margin-bottom: 15%;">
+				<div style="max-width: 1000px; max-height: 1000px; overflow: hidden; margin-top: -40px;">
+					<img th:src="@{${foto.uri}}" th:alt="${foto.nome}"
+						class="img-fluid mb-4"> <a
+						th:href="@{'/carrello/'+${foto.id}}">
+						<div class="row justify-content-center">
+							<div class="btn btn-primary py-2 px-4 text-white">Aggiungi
+								al carrello</div>
+						</div>
+					</a>
 				</div>
+			</div>
 
-				<div class="justify-content-center"
-					style="display: block; position: relative; top: 30%; 
-					transform: translateY(-50%); margin: 0 auto; 
-					max-width: 100%; max-height: 100%;">
-					<div style="max-width: 1000px; max-height: 1000px; overflow: hidden">
-						<img th:src="@{${foto.uri}}" th:alt="${foto.nome}"
-							class="img-fluid mb-4">
-								<a th:href="@{'/carrello/'+${foto.id}}">
-								<div class="row justify-content-center">
-									<div class="btn btn-primary py-2 px-4 text-white">Aggiungi al carrello
-									</div>
-								</div></a>
-					</div>
-				</div>
-				
 		</div>
 	</div>
 

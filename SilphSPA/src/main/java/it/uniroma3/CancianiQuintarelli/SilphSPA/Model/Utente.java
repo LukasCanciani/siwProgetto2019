@@ -1,36 +1,36 @@
 package it.uniroma3.CancianiQuintarelli.SilphSPA.Model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
-public class Richiesta {
+public class Utente {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToMany
-	private Set<Foto> foto;
-	
-	@ManyToOne
-	private Utente utente;
+	private String username;
 	
 	private String email;
 	
-	private String descrizione;
+	private String password;
+	
+	@OneToMany(mappedBy = "utente")
+	private List<Richiesta> richieste;
 
-	public Set<Foto> getFoto() {
-		return foto;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setFoto(Set<Foto> foto) {
-		this.foto = foto;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -41,15 +41,16 @@ public class Richiesta {
 		this.email = email;
 	}
 
-	public String getDescrizione() {
-		return descrizione;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Long getId() {
 		return id;
 	}
+	
 }

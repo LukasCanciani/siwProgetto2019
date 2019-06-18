@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"
 	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; Admin</title>
+<title>Silph &mdash; Richieste</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -101,26 +101,48 @@
 					<div class="col-md-7">
 						<div class="row mb-5">
 							<div class="col-12 ">
-								<h2 class="site-section-heading text-center">Cerca foto</h2>
-								
-								
+								<h2 class="site-section-heading text-center">Inserisci
+									richiesta</h2>
 							</div>
 						</div>
 
 						<div class="row justify-content-center">
-							<form th:action="@{/risultatiFotoNome}" method="POST"
-								th:object="${stringaRicerca}">
-								<p class="error" th:if="${#fields.hasErrors('stringa1')}"
-										th:errors="*{stringa1}"></p>
-								<h4> ricerca per nome</h4>
+							<form th:action="@{/inserisciRichiesta}" method="POST"
+								th:object="${richiesta}">
+								<label class="text-black text-center" style="width: 100%" for="nome">Email</label>
 								<div class="row justify-content-center">
-								<label class="text-black" for="nome">Nome</label> <input
-										type="text" id="nome" th:field="*{stringa1}"
-										class="form-control">
+
+									<input style="max-width: 50%; min-width: 300px;" type="text" id="nome"
+										th:field="*{email}" class="form-control">
 								</div>
-								<br>
+								<p style="text-align: center;" class="error"  th:if="${#fields.hasErrors('email')}"
+									th:errors="*{email}"></p>
+								<br> 
+								<label class="text-black text-center" style="width: 100%" for="nome">Descrizione</label>
 								<div class="row justify-content-center">
-									<input type="submit" value="Cerca"
+									<input type="text" id="descrizione" th:field="*{descrizione}"
+										class="form-control" style="max-height: 200px; max-width: 50%; word-break: break-word; min-width: 300px;">
+
+								</div>
+								<p class="error" style="text-align: center;" th:if="${#fields.hasErrors('descrizione')}"
+									th:errors="*{descrizione}"></p>
+								<br>
+								<div class="text-black text-center">
+									<label class="text-black text-center" for="descrizione">Foto
+										selezionate</label>
+								</div>
+								<div class="row justify-content-center" id="lightgallery">
+									<div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item  "
+										th:each="fot : ${lista}">
+										<img class="rounded-circle"  th:src="@{${fot.uri}}" th:alt="${fot.nome}" width="90px" height="90px"> <br>
+										
+										<p style="text-align: center;" th:text="'ID '+${fot.id}">ID
+											0</p>
+											
+									</div>
+								</div>
+								<div class="row justify-content-center">
+									<input type="submit" value="Conferma"
 										class="btn btn-primary py-2 px-4 text-white">
 								</div>
 							</form>
@@ -140,7 +162,9 @@
 				Copyright &copy;
 				<script data-cfasync="false"
 					src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-				<script>document.write(new Date().getFullYear());</script>
+				<script>
+					document.write(new Date().getFullYear());
+				</script>
 				All rights reserved | This template is made with <i
 					class="icon-heart-o" aria-hidden="true"></i> by <a
 					href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -174,10 +198,10 @@
 	<script src="js/main.js"></script>
 
 	<script>
-    $(document).ready(function(){
-      $('#lightgallery').lightGallery();
-    });
-  </script>
+		$(document).ready(function() {
+			$('#lightgallery').lightGallery();
+		});
+	</script>
 
 </body>
 </html>

@@ -40,7 +40,7 @@ public class CarrelloController {
 			}
 			else {
 				carrello.removeFoto(foto);
-				return "redirect:/carrello"+foto.getId();
+				return "redirect:/carrello";
 			}
 		}
 		

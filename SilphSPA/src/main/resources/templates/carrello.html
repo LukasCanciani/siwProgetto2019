@@ -86,8 +86,10 @@
 				<h2 class="site-section-heading text-center">Carrello</h2>
 			</div>
 		</div>
-		<div style="margin-left: 10%">
+		<div style="margin-left: 10%; align-content: left;">
 			<p class="text-left text-black h4">Foto selezionate:</p>
+			<p class="error" th:if="${#fields.hasErrors('carrello.foto')}"
+										th:errors="*{carrello.foto}"></p>
 			<ul style="list-style: none;">
 				<li class="text-black font-weight-light mb-4 h4 text-left"
 					th:each="fot : ${carrello.foto}">
@@ -97,17 +99,18 @@
 								th:src="@{${fot.uri}}" th:alt="${fot.nome}" width="130px"
 								height="130px"></a>
 						</div>
-						<div style="margin-right: 20%;margin-left:3%; text-align:left ;" >
+						<div style="margin-right: 20%; margin-left: 3%; text-align: left;">
 							<span style="color: gray; font-size: 22px;"
 								th:text="'Nome: ' +${fot.nome}"> Nome: Albero</span><br> <span
 								style="color: gray; font-size: 22px;"
 								th:text="'Album: ' +${fot.album.nome}"> Album: Natura </span><br>
 							<span style="color: gray; font-size: 22px;"
 								th:text="'Autore: ' + ${fot.fotografo.nome} + ' ' + ${fot.fotografo.cognome}">
-								Autore: Mario Rossi </span> 
-								<a th:href="@{'/rimuoviCarrello/'+${fot.id}}">
-								<div class="row justify-content-left" style="margin-left:0%; margin-top:5px; ">
-									<img src="images/icons/trash.png" width="40" height="40">	
+								Autore: Mario Rossi </span> <a
+								th:href="@{'/rimuoviCarrello/'+${fot.id}}">
+								<div class="row justify-content-left"
+									style="margin-left: 0%; margin-top: 5px;">
+									<img src="images/icons/trash.png" width="40" height="40">
 								</div>
 							</a>
 						</div>
@@ -115,9 +118,8 @@
 				</li>
 			</ul>
 			<a th:href="@{/richiesta}">
-			<div class="btn btn-primary py-2 px-4 text-white">
-			Invia richiesta
-			</div>
+				<div class="btn btn-primary py-2 px-4 text-white">Invia
+					richiesta</div>
 			</a>
 		</div>
 	</div>
