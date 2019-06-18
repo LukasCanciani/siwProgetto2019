@@ -61,7 +61,11 @@ public class Foto {
 	
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
 		return this.id.hashCode();
+	}
+	@Override
+	public boolean equals(Object obj) {
+		Foto foto = (Foto) obj;
+		return this.id.equals(foto.getId());
 	}
 }

@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org"
 	xmlns="htttp://www.w3.org/1999/html">
 <head>
-<title>Silph &mdash; Album</title>
+<title>Silph &mdash; Carrello</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +34,6 @@
 
 	<div class="site-wrap">
 
-		<!-- Servono?? -->
 		<div class="site-mobile-menu">
 			<div class="site-mobile-menu-header">
 				<div class="site-mobile-menu-close mt-3">
@@ -62,15 +61,15 @@
 							class="site-navigation position-relative text-right text-lg-center"
 							role="navigation">
 							<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-								<li class="active"><a th:href="@{'/index'}">Home</a></li>
-								<li class="has-children"><a href="single.html">Gallery</a>
+								<li><a href="/">Home</a></li>
+								<li class="has-children"><a>GALLERIA</a>
 									<ul class="dropdown">
 										<li><a href="/foto">Foto</a></li>
 										<li><a href="/album">Album</a></li>
 										<li><a href="/fotografi">Fotografi</a></li>
 									</ul></li>
-								<li><a th:href="@{'/admin'}">StaffOnly</a></li>
-								<li><a href="about.html">Carrello</a></li>
+								<li><a href="/admin">StaffOnly</a></li>
+								<li><a href="/carrello">Carrello</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -83,22 +82,43 @@
 
 
 		<div class="row justify-content-center">
-					<div class="col-12 ">
-						<h2 class="site-section-heading text-center"> Carrello </h2>
+			<div class="col-12 ">
+				<h2 class="site-section-heading text-center">Carrello</h2>
+			</div>
+		</div>
+		<div style="margin-left: 10%">
+			<p class="text-left text-black h4">Foto selezionate:</p>
+			<ul style="list-style: none;">
+				<li class="text-black font-weight-light mb-4 h4 text-left"
+					th:each="fot : ${carrello.foto}">
+					<div class="row mb-5">
+						<div>
+							<a th:href="@{'/foto/'+${fot.id}}"> <img
+								th:src="@{${fot.uri}}" th:alt="${fot.nome}" width="130px"
+								height="130px"></a>
+						</div>
+						<div style="margin-right: 20%;margin-left:3%; text-align:left ;" >
+							<span style="color: gray; font-size: 22px;"
+								th:text="'Nome: ' +${fot.nome}"> Nome: Albero</span><br> <span
+								style="color: gray; font-size: 22px;"
+								th:text="'Album: ' +${fot.album.nome}"> Album: Natura </span><br>
+							<span style="color: gray; font-size: 22px;"
+								th:text="'Autore: ' + ${fot.fotografo.nome} + ' ' + ${fot.fotografo.cognome}">
+								Autore: Mario Rossi </span> 
+								<a th:href="@{'/rimuoviCarrello/'+${fot.id}}">
+								<div class="row justify-content-left" style="margin-left:0%; margin-top:5px; ">
+									<img src="images/icons/trash.png" width="40" height="40">	
+								</div>
+							</a>
+						</div>
 					</div>
-				</div>
-		<div style="margin-left:10% ">
-		<p class="text-left text-black h4">Foto selezionate:</p>
-		<ul style="list-style: none;">
-			<li class="text-black font-weight-light mb-4 h4 text-left"
-				th:each="fot : ${carrello.foto}"><a
-				th:href="@{'/foto/'+${fot.id}}"> <img
-					th:src="@{${fot.uri}}" th:alt="${fot.nome}" width="100px"
-					height="100px"></a><div class="row"> <span style="color: gray; font-size: 22px; " th:text="'Nome: ' +${fot.nome}"> Nome: Albero </span>
-					<span style="color: gray; font-size: 22px; " th:text="'Album: ' +${fot.album.nome}"> Album: Natura </span>
-					 </div>
-					 </li>
-		</ul>
+				</li>
+			</ul>
+			<a th:href="@{/richiesta}">
+			<div class="btn btn-primary py-2 px-4 text-white">
+			Invia richiesta
+			</div>
+			</a>
 		</div>
 	</div>
 
@@ -112,8 +132,8 @@
 				<script data-cfasync="false"
 					src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 				<script>
-							document.write(new Date().getFullYear());
-						</script>
+					document.write(new Date().getFullYear());
+				</script>
 				All rights reserved | This template is made with <i
 					class="icon-heart-o" aria-hidden="true"></i> by <a
 					href="https://colorlib.com" target="_blank">Colorlib</a>

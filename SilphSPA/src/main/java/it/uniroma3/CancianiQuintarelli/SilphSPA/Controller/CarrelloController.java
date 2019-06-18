@@ -30,6 +30,20 @@ public class CarrelloController {
 				return "redirect:/foto/"+foto.getId();
 			}
 		}
+		
+		@RequestMapping(value = "/rimuoviCarrello/{id}", method = RequestMethod.GET)
+		public String rimuoviDalCarrello(@PathVariable("id") Long id, HttpServletRequest request) {
+			Carrello carrello = Carrello.getCarrello();
+			Foto foto = this.fs.trovaFotoPerId(id);
+			if (foto == null) {
+				return "redirect:/carrello";
+			}
+			else {
+				carrello.removeFoto(foto);
+				return "redirect:/carrello"+foto.getId();
+			}
+		}
+		
 		@RequestMapping(value="/carrello")
 		public String mostraCarrello(Model model) {
 			model.addAttribute("carrello",Carrello.getCarrello());

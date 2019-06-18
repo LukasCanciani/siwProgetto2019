@@ -33,5 +33,9 @@ public class Carrello {
 		this.foto.add(fot);
 	}
 	
+	public void removeFoto(Foto fot) {
+		this.foto.remove(fot);
+	}
+	
 	
 }
