@@ -3,9 +3,12 @@ package it.uniroma3.CancianiQuintarelli.SilphSPA.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.SilphStaff;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.SilphStaffService;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.SilphStaffValidator;
 

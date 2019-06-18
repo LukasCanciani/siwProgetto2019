@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.tomcat.util.http.fileupload.ParameterParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +20,7 @@ import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Album;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Foto;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.FotoForm;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Fotografo;
+import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.StringaRicerca;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.AlbumService;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.FotoFormValidator;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Service.FotoService;
@@ -108,6 +110,56 @@ public class FotoController {
 		} else {
 			model.addAttribute("foto", foto);
 			return "foto.html";
+		}
+	}
+	
+	@RequestMapping(value = "/ricercaFoto")
+	public String cercaFoto() {
+		return "ricercaFoto.html";
+	}
+	
+	@RequestMapping(value = "/cercaFotoPerId")
+	public String cercaFotoPerId(Model model) {
+		model.addAttribute("stringaRicerca", new StringaRicerca());
+		return "ricercaFotoId.html";
+	}
+	
+	@RequestMapping(value = "/cercaFotoPerNome")
+	public String cercaFotoPerNome(Model model) {
+		model.addAttribute("stringaRicerca", new StringaRicerca());
+		return "ricercaFotoNome";
+	}
+	
+	@RequestMapping(value = "/risultatiFotoNome", method = RequestMethod.POST)
+	public String risultatoRicercaNome(@Valid @ModelAttribute("stringaRicerca") StringaRicerca stringaRicerca, Model model , BindingResult bindingResult) {
+		List<Foto> lf = this.fotoService.trovaFotoPerNome(stringaRicerca.getStringa1());
+		if(!lf.isEmpty()) {
+			model.addAttribute("risultati", lf);
+			return "listaFoto";
+		}
+		else {
+			bindingResult.rejectValue("stringa1", "wrong");
+			return "ricercaFotoNome.html";
+		}
+	}
+	
+	@RequestMapping(value = "/risultatiFotoId", method = RequestMethod.POST)
+	public String risultatoRicercaId(@Valid @ModelAttribute("stringaRicerca") StringaRicerca stringaRicerca, Model model , BindingResult bindingResult) {
+		Long id =0L;
+		try {
+			id = Long.parseLong(stringaRicerca.getStringa1());
+		}catch (NumberFormatException e) {
+			bindingResult.rejectValue("stringa1", "wrong");
+			return "ricercaFotoId.html";
+		}
+		Foto foto = this.fotoService.trovaFotoPerId(id);
+		if(foto!=null) {
+			model.addAttribute("foto", foto);
+			return "foto";
+		}
+		else {
+			bindingResult.rejectValue("stringa1", "wrong");
+			return "ricercaFotoId.html";
 		}
 	}
 }

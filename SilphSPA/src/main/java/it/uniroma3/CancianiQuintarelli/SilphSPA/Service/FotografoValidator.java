@@ -9,7 +9,7 @@ import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Fotografo;
 
 @Component
 public class FotografoValidator implements Validator{
-
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return Fotografo.class.equals(clazz);
