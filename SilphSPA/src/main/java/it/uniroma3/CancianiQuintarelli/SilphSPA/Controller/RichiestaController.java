@@ -38,7 +38,6 @@ public class RichiestaController {
 		else {
 			Richiesta richiesta = new Richiesta();
 			model.addAttribute("richiesta", richiesta);
-			model.addAttribute("lista", Carrello.getCarrello().getFoto());
 			return "inserimentoRichiesta.html";
 		}
 	}
