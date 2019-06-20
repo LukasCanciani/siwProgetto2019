@@ -109,38 +109,29 @@
 						<div class="row justify-content-center">
 							<form th:action="@{/inserisciRichiesta}" method="POST"
 								th:object="${richiesta}">
-								<label class="text-black text-center" style="width: 100%" for="nome">Email</label>
+								<label class="text-black text-center" style="width: 100%"
+									for="nome">Email</label>
 								<div class="row justify-content-center">
 
-									<input style="max-width: 50%; min-width: 300px;" type="text" id="nome"
-										th:field="*{email}" class="form-control">
+									<input style="max-width: 50%; min-width: 300px;" type="text"
+										id="nome" th:field="*{email}" class="form-control">
 								</div>
-								<p style="text-align: center;" class="error"  th:if="${#fields.hasErrors('email')}"
-									th:errors="*{email}"></p>
-								<br> 
-								<label class="text-black text-center" style="width: 100%" for="nome">Descrizione</label>
+								<p style="text-align: center;" class="error"
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+								<br> <label class="text-black text-center"
+									style="width: 100%" for="nome">Descrizione</label>
 								<div class="row justify-content-center">
 									<input type="text" id="descrizione" th:field="*{descrizione}"
-										class="form-control" style="max-height: 200px; max-width: 50%; word-break: break-word; min-width: 300px;">
+										class="form-control"
+										style="max-height: 200px; max-width: 50%; word-break: break-word; min-width: 300px;">
 
 								</div>
-								<p class="error" style="text-align: center;" th:if="${#fields.hasErrors('descrizione')}"
+								<p class="error" style="text-align: center;"
+									th:if="${#fields.hasErrors('descrizione')}"
 									th:errors="*{descrizione}"></p>
 								<br>
-								<div class="text-black text-center">
-									<label class="text-black text-center" for="descrizione">Foto
-										selezionate</label>
-								</div>
-								<div class="row justify-content-center" id="lightgallery">
-									<div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 item  "
-										th:each="fot : ${lista}">
-										<img class="rounded-circle"  th:src="@{${fot.uri}}" th:alt="${fot.nome}" width="90px" height="90px"> <br>
-										
-										<p style="text-align: center;" th:text="'ID '+${fot.id}">ID
-											0</p>
-											
-									</div>
-								</div>
+							
+									
 								<div class="row justify-content-center">
 									<input type="submit" value="Conferma"
 										class="btn btn-primary py-2 px-4 text-white">
@@ -197,11 +188,6 @@
 
 	<script src="js/main.js"></script>
 
-	<script>
-		$(document).ready(function() {
-			$('#lightgallery').lightGallery();
-		});
-	</script>
 
 </body>
 </html>

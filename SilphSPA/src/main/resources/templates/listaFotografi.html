@@ -93,7 +93,7 @@
 				<br>
 				<a th:href="@{'/fotografo/' + ${fotografo.id}}">
 				<div style="width: 200px; height: 200px; overflow: hidden">
-					<img th:src="@{${fotografo.fotoProfilo}}" alt="image"
+					<img th:src="@{${fotografo.fotoProfilo}}" alt="image" style="border-style: solid; border-color: silver;"
 						class="img-fluid w-50 h-50 rounded-circle mb-4">
 					<h2 class="text-black h4 font-weight-light mb-3 "
 						th:text="${fotografo.nome} + ' ' +${fotografo.cognome}">Mario
