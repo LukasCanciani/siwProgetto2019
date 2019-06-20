@@ -45,14 +45,18 @@ public class DBPopulation implements ApplicationRunner{
 			silphstaff.setPassword(adminPassword);
 			Fotografo fotografo1 = new Fotografo("Mario", "Rossi", "https://bit.ly/2Rouwnu");
 			Fotografo fotografo2 = new Fotografo("Paolo", "Bianchi", "https://bit.ly/2L4RfUv");
-			Album album1 = new Album("natura", fotografo1);
-			Album album2 = new Album("pianeti", fotografo1);
-			Album album3 = new Album("macchine", fotografo2);
-			Foto foto1 = new Foto("foto1", "https://bit.ly/2XnxgqS", album1, fotografo1);
-			Foto foto2 = new Foto("foto2", "https://bit.ly/2WUVYzb", album2, fotografo1);
-			Foto foto3 = new Foto("foto3", "https://bit.ly/2IU5k4E", album3, fotografo2);
-			Foto foto4 = new Foto("foto4","https://bit.ly/2XtUf3g", album3, fotografo2);
-
+			Album album1 = new Album("Natura", fotografo1);
+			Album album2 = new Album("Pianeti", fotografo1);
+			Album album3 = new Album("Macchine", fotografo2);
+			Foto foto1 = new Foto("Bolla", "https://bit.ly/2XnxgqS", album1, fotografo1);
+			Foto foto2 = new Foto("Universo", "https://bit.ly/2WUVYzb", album2, fotografo1);
+			Foto foto3 = new Foto("Lamborghini", "https://bit.ly/2IU5k4E", album3, fotografo2);
+			Foto foto4 = new Foto("Adam","https://bit.ly/2MZ6ErW", album3, fotografo2);
+			Foto foto5 = new Foto("Picasso","https://bit.ly/31LGHiT", album3, fotografo2);	
+			Foto foto6 = new Foto("Luna","https://bit.ly/2RvPDo8", album2, fotografo1);	
+			Foto foto7 = new Foto("Marte","https://bit.ly/2KseVCC", album2, fotografo1);
+			Foto foto8 = new Foto("Spiaggia","https://bit.ly/2L5HmpB", album1, fotografo1);
+			Foto foto9 = new Foto("Montagna","https://bit.ly/2RyPccN", album1, fotografo1);
 			this.silphStaffService.salvaSilphStaff(silphstaff);
 			this.fotografoService.salvaFotografo(fotografo1);
 			this.fotografoService.salvaFotografo(fotografo2);
@@ -63,6 +67,11 @@ public class DBPopulation implements ApplicationRunner{
 			this.fotoService.salvaFoto(foto2);
 			this.fotoService.salvaFoto(foto3);
 			this.fotoService.salvaFoto(foto4);	
+			this.fotoService.salvaFoto(foto5);
+			this.fotoService.salvaFoto(foto6);
+			this.fotoService.salvaFoto(foto7);
+			this.fotoService.salvaFoto(foto8);
+			this.fotoService.salvaFoto(foto9);
 		}
 	}	
 }
