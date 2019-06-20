@@ -27,7 +27,7 @@ public class CarrelloController {
 			}
 			else {
 				carrello.addFoto(foto);
-				return "redirect:/foto/"+foto.getId();
+				return "redirect:/carrello";
 			}
 		}
 		
