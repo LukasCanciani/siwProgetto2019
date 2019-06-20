@@ -1,6 +1,8 @@
 package it.uniroma3.CancianiQuintarelli.SilphSPA.Service;
 
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,11 @@ public class SilphStaffService {
 	@Transactional
 	public void salvaSilphStaff(SilphStaff silphStaff) {
 		this.silphStaffRepository.save(silphStaff);
+	}
+	
+	@Transactional
+	public List<SilphStaff> tutti(){
+		return (List<SilphStaff>)this.silphStaffRepository.findAll();
 	}
 	
 }

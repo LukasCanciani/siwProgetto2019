@@ -1,5 +1,6 @@
 package it.uniroma3.CancianiQuintarelli.SilphSPA.Model;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -17,6 +18,16 @@ public class Fotografo implements Comparable<Fotografo> {
 	private String nome;
 	private String cognome;
 	private String fotoProfilo;
+	
+	public Fotografo() {}
+	
+	public Fotografo(String nome, String cognome, String fotoProfilo) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.fotoProfilo = fotoProfilo;
+		this.setAlbum(Collections.emptyList());
+		this.setFoto(Collections.emptyList());
+	}
 	
 	@OneToMany(mappedBy = "fotografo")
 	List<Album> album;

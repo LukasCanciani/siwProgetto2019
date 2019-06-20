@@ -18,9 +18,6 @@ public class Richiesta {
 	@ManyToMany
 	private Set<Foto> foto;
 	
-	@ManyToOne
-	private Utente utente;
-	
 	private String email;
 	
 	private String descrizione;

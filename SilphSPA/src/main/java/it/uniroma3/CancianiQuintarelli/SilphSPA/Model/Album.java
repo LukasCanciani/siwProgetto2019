@@ -1,5 +1,6 @@
 package it.uniroma3.CancianiQuintarelli.SilphSPA.Model;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -17,6 +18,14 @@ public class Album {
 	private Long id;
 	
 	private String nome;
+	
+	public Album() {}
+	
+	public Album(String nome, Fotografo fotografo) {
+		this.nome = nome;
+		this.fotografo = fotografo;
+		this.setFoto(Collections.emptyList());
+	}
 	
 	@ManyToOne
 	private Fotografo fotografo;

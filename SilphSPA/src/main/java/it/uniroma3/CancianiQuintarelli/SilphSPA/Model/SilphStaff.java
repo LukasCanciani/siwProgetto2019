@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 
 @Entity
@@ -20,7 +22,12 @@ public class SilphStaff {
 	
 	private String password;
 	
+	public SilphStaff() {}
 	
+	public SilphStaff(String userName, String role) {
+		this.username = userName;
+		this.role = role;
+	}
 
 	public String getUsername() {
 		return username;

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Richiesta;
-import it.uniroma3.CancianiQuintarelli.SilphSPA.Model.Utente;
 import it.uniroma3.CancianiQuintarelli.SilphSPA.Repository.RichiestaRepository;
 
 @Service
@@ -42,9 +41,6 @@ public class RichiestaService {
 	public List<Richiesta> tutti(){
 		return (List<Richiesta>) this.rr.findAll();
 	}
-	@Transactional
-	public List<Richiesta> trovaRichiestaPerUtente(Utente u){
-		return this.rr.findByUtente(u);
-	}
+	
 	
 }
